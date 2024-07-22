@@ -1,8 +1,9 @@
 # Proyecto Backend en NodeJS
 
-Este proyecto es el backend que se encarga de gestionar y autorizar el login de cada usuario para ingresar en la página Web Crud creada para gestionar la API de control de inventario.
+Este proyecto desarrollado en NodeJS proporciona la funcionalidad backend para gestionar y autorizar el inicio de sesión de los usuarios en una aplicación web CRUD destinada al control de inventario.
 
-Dicha pagina Web Crud se encuentra en el repositorio : https://github.com/anap011/project_inventory_management-web_crud.git
+La aplicación web CRUD correspondiente está disponible en el siguiente repositorio: 
+https://github.com/anap011/project_inventory_management-web_crud.git
 
 
 ## Requisitos
@@ -38,4 +39,32 @@ Dicha pagina Web Crud se encuentra en el repositorio : https://github.com/anap01
 3. Inicie el proyecto:
 
     npm start
+
+## Creación de la base de datos MondoDB por Mongosh
+
+Link MongoDB : https://www.mongodb.com/
+
+1. Conectar a mongosh
+
+    mongosh "mongodb+srv://<username>:<password>@cluster0.tecixwp.mongodb.net/" --apiVersion 1 --username <username>
+
+2. Seleccionar la base de datos (o crearla si no existe):
+    
+    use <nombre-base-de-datos>
+
+3. Crear la colección y añadir un índice para username:
+
+    db.createCollection('<nombre-colección>')
+
+    db.logins.createIndex({ username: 1 }, { unique: true })
+
+4. Insertar datos iniciales en la colección creada:
+
+    db.logins.insertMany([
+
+        { username: "", password_hash: "" },
+
+        { username: "", password_hash: "" }
+
+    ])
 
